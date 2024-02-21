@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
+    <link rel="stylesheet" href="css/general.css" />
+    <title>Logement d'une nuit</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <script type="module" src="js/App.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
+    <script src="js/plugin/zingtouch.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <img class="" src="images/logo.svg" />
+    </header>
+
+    <main id="page"></main>
+
+    <template id="template-recherche">
+      <div id="titre" class="titre">Recherche</div>
+      <div id="fleche" class="fleche">
+        <a href="#"><img src="images/fleche.svg" alt="fleche-swipe" /> </a>
+      </div>
+      <div id="recherche" class="recherche"></div>
+      <div id="filtre" class="filtre">
+        <form action="" id="formRecherche">
+          <table class="filtreTable">
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  step="0.01"
+                  class="filtreinput"
+                  min="1"
+                  placeholder="Prix mini"
+                  id="prixmini"
+                  name="prixmini"
+                />
+              </td>
+              <td>
+                <input type="number" step="0.01" class="filtreinput" min="1" placeholder="Prix max" id="prixmax" name="prixmax" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="number"
+                  step="0.01"
+                  class="filtreinputDistance"
+                  min="1"
+                  placeholder="DistanceMax"
+                  id="distance"
+                  name="distance"
+                />
+                <input type="hidden" name="location" id="location" />
+              </td>
+              <td><input type="submit" value="->" class="submitRecherche" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div id="map" class="map"></div>
+      <!-- <script src="js/map.js" defer></script> -->
+    </template>
+
+    <template id="template-accueil">
+      <div id="accueil" class="accueil"></div>
+    </template>
+
+    <template id="template-appercu-logement">
+      <a href="#logement/" class="appercu-logement">
+        <img class="accueilimg" src="images/cegep.jpeg" />
+        <p class="nom"></p>
+        <p class="adresse"></p>
+        <p class="prix"></p>
+      </a>
+    </template>
+
+    <template id="template-detail">
+      <h1 id="nom-logement"></h1>
+      <a href="#">
+        <img id="fleche-retour" src="images/fleche.svg" alt="fleche retour" />
+      </a>
+      <img id="image-logement" src="" alt="image logement" />
+      <p id="prix"></p>
+      <p id="description"></p>
+      <a href="#">
+        <div id="bouton-reserver">Réserver</div>
+      </a>
+    </template>
+
+    <footer>
+      <a href="#">
+        <img id="footer-bouton-accueil" class="bouton-footer" src="images/accueil.svg" />
+      </a>
+      <a href="#recherche">
+        <img id="footer-bouton-recherche" class="bouton-footer" src="images/recherche.svg" />
+      </a>
+    </footer>
+  </body>
+</html>

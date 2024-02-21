@@ -1,0 +1,38 @@
+.accueiltable {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.accueiltd {
+  text-align: center;
+  width: 30%;
+}
+
+.accueil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.accueilimg {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.appercu-logement {
+  display: block;
+  width: 45%;
+  margin-bottom: 8%;
+}
+
+.appercu-logement > .nom {
+  font-size: large;
+}
+
+.appercu-logement > .adresse {
+  font-size: small;
+}
+
+.appercu-logement > p {
+  margin: 10px 0;
+}

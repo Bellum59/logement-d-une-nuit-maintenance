@@ -1,0 +1,19 @@
+.accueiltable {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.accueiltd {
+  text-align: center;
+  height: 250px;
+  width: 300px;
+}
+
+.accueil {
+  display: flex;
+}
+
+.accueilimg {
+  border-radius: 20px;
+  height: 80%;
+}

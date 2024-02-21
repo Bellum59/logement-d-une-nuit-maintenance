@@ -1,0 +1,24 @@
+<!-- Fonctionne seulement sur emulateur -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
+    <title>Poc GPS</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
+  </head>
+  <body>
+    <p id="lat"></p>
+    <p id="lon"></p>
+    <script>
+      document.addEventListener("deviceready", (e) => {
+        navigator.geolocation.getCurrentPosition((position) => {
+          document.getElementById("lat").textContent = position.coords.latitude;
+          document.getElementById("lon").textContent = position.coords.longitude;
+        });
+      });
+    </script>
+  </body>
+</html>

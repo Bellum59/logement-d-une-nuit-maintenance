@@ -1,0 +1,33 @@
+#nom-logement {
+  text-align: center;
+}
+
+#fleche-retour {
+  display: block;
+}
+
+#image-logement {
+  display: block;
+  height: 250px;
+  margin: 30px auto;
+}
+
+#prix {
+  text-align: center;
+}
+
+#description {
+  text-align: justify;
+}
+
+#bouton-reserver {
+  border-radius: 50px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  width: 148px;
+  margin: 10px auto;
+  padding: 10px 0;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
