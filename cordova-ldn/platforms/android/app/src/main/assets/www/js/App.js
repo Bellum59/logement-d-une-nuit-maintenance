@@ -64,7 +64,7 @@ export default class App {
     this.vueRecherche.afficherNouveauResultat(logementFiltrer);
   }
 
-  initialiserSwipe() {
+  /*initialiserSwipe() {
     var region = ZingTouch.Region(App.page);
     region.bind(App.page, "swipe", function (event) {
       console.log(event.detail.data[0].currentDirection);
@@ -74,7 +74,7 @@ export default class App {
         document.location.href = "#";
       }
     });
-  }
+  }*/
 }
 
 new App(window);
