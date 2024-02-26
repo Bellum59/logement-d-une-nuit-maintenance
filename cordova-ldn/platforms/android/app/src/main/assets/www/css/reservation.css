@@ -1,0 +1,34 @@
+#titre-reservation{
+    text-align: center;
+}
+
+#carrer-information{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 12%;
+}
+
+#info-perso{
+    table-layout: fixed;
+    justify-content: center;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
+
+#info-perso td{
+    text-align: center;
+}
+
+.input-reservation{
+    width:100%;
+    height: 80%;
+    border-radius: 15px;
+    border: 1;
+}
+
+.sous-titre{
+    text-align: center;
+}
