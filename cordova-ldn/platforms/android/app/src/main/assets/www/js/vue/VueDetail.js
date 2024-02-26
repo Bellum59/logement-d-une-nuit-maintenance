@@ -17,7 +17,7 @@ export default class VueDetail {
     logementAffiche.querySelector("#image-logement").src = logement.image;
     logementAffiche.querySelector("#prix").textContent = `${logement.prix}$ par nuit`;
     logementAffiche.querySelector("#description").textContent = logement.description;
-    var test = document.getElementById("reservation");
+    var test = logementAffiche.querySelector("#reservation");
     test.addEventListener("click" , (evenement)=> this.reserver(evenement));
     App.page.replaceChildren(logementAffiche);
     App.footer.colorerBouton();
