@@ -112,28 +112,31 @@
     </div>
     <h2 class="sous-titre">Info Reservation</h2>
     <div id="carrer-information">
+    <form action="" id="formReservation">
     <table id="info-reservation">
       <tr>
         <td><label for="nom"> Nom </label></td>
-        <td><p id="nom-reservation"></p></td>
+        <td><input class="input-reservation" type="text" id="nom" name="nom"></td>
       </tr>
       <tr>
         <td><label for="prenom"> Prenom </label></td>
-        <td><p id="prenom-reservation"></p></td>
+        <td><input class="input-reservation" type="text" id="prenom" name="nom"></td>
       </tr>
       <tr>
         <td><label for="email"> Email </label></td>
-        <td><p id="email-reservation"></p></td>
+        <td><input class="input-reservation" type="text" id="email" name="email"></td>
       </tr>
       <tr>
         <td><label for="date-debut">Date début</label></td>
-        <td><p id="date-debut"></p></td>
+        <td><input type="date" id="date-debut"><input type="time"></td>
       </tr>
       <tr>
         <td><label for="date-fin">Date fin</label></td>
-        <td><p id="date-fin"></p></td>
+        <td><input type="date" id="date-fin"><input type="time"></td>
       </tr>
     </table>
+    <input type="submit" value="Reserver" id="submitReserver">
+    </form>
     </div>
   </main>
 
