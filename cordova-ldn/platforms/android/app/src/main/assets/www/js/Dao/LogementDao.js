@@ -6,7 +6,7 @@ export default class LogementDao {
     let logement;
     let data = new FormData();
     data.append("id", id);
-    await fetch("https://mobile.devbel.xyz//Api/RecupereLogementParId.php", {
+    await fetch("https://mobile.devbel.xyz/Api/RecupereLogementParId.php", {
       method: "POST",
       body: data,
     })

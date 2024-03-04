@@ -6,7 +6,7 @@ export default class LogementDao {
     let logement;
     let data = new FormData();
     data.append("id", id);
-    await fetch("https://www.mobile.beldevca.xyz/Api/RecupereLogementParId.php", {
+    await fetch("https://mobile.devbel.xyz/Api/RecupereLogementParId.php", {
       method: "POST",
       body: data,
     })
@@ -46,7 +46,7 @@ export default class LogementDao {
     if (filtresLogment.prixMin) data.append("prixMin", filtresLogment.prixMin);
     if (filtresLogment.prixMax) data.append("prixMax", filtresLogment.prixMax);
     data.append("limite", limite);
-    await fetch("https://www.mobile.beldevca.xyz/Api/FiltrerListe.php", {
+    await fetch("https:/mobile.devbel.xyz/Api/FiltrerListe.php", {
       method: "POST",
       body: data,
     })

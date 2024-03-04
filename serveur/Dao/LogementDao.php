@@ -87,6 +87,19 @@ class LogementDao
         $logements = $requete->fetchAll(PDO::FETCH_ASSOC);
         return array_map(fn ($logement) => new Logement($logement), $logements);
     }
+
+    public static function AjouterReservation($arrayInfo){
+        $bdd = new BaseDeDonnees();
+        $basededonnees = $bdd->pdo;
+        $SQL_AJOUTER_RESERVATION = "INSERT INTO reservation (idLogement, dateDebutReservation,dateFinReservation,nomReservation,prenomReservation,emailReservation) VALUES (:idLogement, :dateDebutReservation, :dateFinReservation, :nomReservation, :prenomReservation, :emailReservation)";
+        $requete->bindParam(":idLogement", $arrayInfo["idLogement"]);
+        $requete->bindParam(":dateDebutReservation", $arrayInfo["dateDebut"]);
+        $requete->bindParam(":dateFinReservation", $arrayInfo["dateFin"]);
+        $requete->bindParam(":nomReservation", $arrayInfo["nom"]);
+        $requete->bindParam(":prenomReservation", $arrayInfo["prenom"]);
+        $requete->bindParam(":emailReservation", $arrayInfo["email"]);
+        $requete->execute();
+    }
 }
 
 /*$logementTest = new LogementDao();

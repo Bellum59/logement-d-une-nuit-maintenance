@@ -5,6 +5,7 @@ import VueAccueil from "./vue/VueAccueil.js";
 import VueDetail from "./vue/VueDetail.js";
 import VueFooter from "./vue/VueFooter.js";
 import VueRecherche from "./vue/VueRecherche.js";
+import VueReservation from "./vue/vueReservation.js";
 
 export default class App {
   static page = document.getElementById("page");
@@ -18,18 +19,20 @@ export default class App {
     this.vueAcceuil = new VueAccueil();
     this.vueRecherche = new VueRecherche();
     this.vueDetail = new VueDetail();
+    this.vueReservation = new VueReservation();
     this.vueRecherche.initialiserActionFiltre((filtres) => this.actionFiltrerResultat(filtres));
     this.longitude = null;
     this.latitude = null;
+    this.initialiserNavigation();
 
-    document.addEventListener("deviceready", (e) => {
+    /*document.addEventListener("deviceready", (e) => { //Doit reactiver avant de re importer dans android studio - faire cordova prepare avant de importer
       this.initialiserNavigation();
       this.initialiserSwipe();
       navigator.geolocation.getCurrentPosition((position) => {
         this.longitude = position.coords.longitude;
         this.latitude = position.coords.latitude;
       });
-    });
+    });*/
   }
 
   async initialiserNavigation() {
@@ -47,11 +50,15 @@ export default class App {
 
     if (!hash) {
       this.vueAcceuil.afficher(this.logements);
+      console.log("test")
     } else if (hash.match(/^#recherche/)) {
       this.vueRecherche.afficher(this.logements, this.longitude, this.latitude);
     } else if ((navigation = hash.match(/^#logement\/([\d]+)/))) {
       let id = navigation[1];
       this.vueDetail.afficher(id);
+    } else if ((navigation = hash.match(/^#reservation\/([\d]+)/))){
+      let id = navigation[1];
+      this.vueReservation.afficher(id);
     }
   }
 
@@ -64,7 +71,7 @@ export default class App {
     this.vueRecherche.afficherNouveauResultat(logementFiltrer);
   }
 
-  initialiserSwipe() {
+  /*initialiserSwipe() {
     var region = ZingTouch.Region(App.page);
     region.bind(App.page, "swipe", function (event) {
       console.log(event.detail.data[0].currentDirection);
@@ -74,7 +81,8 @@ export default class App {
         document.location.href = "#";
       }
     });
-  }
+  }*/
 }
 
 new App(window);
+console.log("success");
