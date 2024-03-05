@@ -21,6 +21,7 @@ class LogementDao
         return new Logement($logement);
     }
 
+
     /*
     * Recupere une liste de logement en fonction des filtres enregistrer
     * En input il s'agis dun array, les champs "longitude" et "lattitude" sont obligatoire
@@ -88,10 +89,15 @@ class LogementDao
         return array_map(fn ($logement) => new Logement($logement), $logements);
     }
 
+    /*Recois un array contenant les informations pour une réservation et enregistre
+    ces infos dans la base de données
+    */
     public static function AjouterReservation($arrayInfo){
+        require_once 'connexion.php';
         $bdd = new BaseDeDonnees();
         $basededonnees = $bdd->pdo;
         $SQL_AJOUTER_RESERVATION = "INSERT INTO reservation (idLogement, dateDebutReservation,dateFinReservation,nomReservation,prenomReservation,emailReservation) VALUES (:idLogement, :dateDebutReservation, :dateFinReservation, :nomReservation, :prenomReservation, :emailReservation)";
+        $requete = $bdd->prepare($SQL_AJOUTER_RESERVATION);
         $requete->bindParam(":idLogement", $arrayInfo["idLogement"]);
         $requete->bindParam(":dateDebutReservation", $arrayInfo["dateDebut"]);
         $requete->bindParam(":dateFinReservation", $arrayInfo["dateFin"]);
@@ -99,13 +105,6 @@ class LogementDao
         $requete->bindParam(":prenomReservation", $arrayInfo["prenom"]);
         $requete->bindParam(":emailReservation", $arrayInfo["email"]);
         $requete->execute();
+        return;
     }
 }
-
-/*$logementTest = new LogementDao();
-$test["lattitude"] = 46.8138;
-$test["longitude"] = -71.2399;
-$test["prixMin"] = 30;
-$test["prixMax"] = 200;*/
-//var_dump($logementTest->RecupererUnLogementParId(1));
-//var_dump($logementTest->RecupererListeFiltrer($test));

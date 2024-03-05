@@ -73,4 +73,22 @@ export default class LogementDao {
     console.log(logements);
     return logements;
   }
+
+  static async ReserverLogement(reservation){;
+    let data = new FormData();
+    data.append("idLogement", reservation.idLogement);
+    data.append("dateDebutReservation", reservation.dateDebut);
+    data.append("dateFinReservation", reservation.dateFin);
+    data.append("nomReservation", reservation.nomReservation);
+    data.append("prenomReservation", reservation.prenomReservation);
+    data.append("emailReservation", reservation.emailReservation);
+    await fetch("https://mobile.devbel.xyz/Api/AjouterReservation.php", {
+      method: "POST",
+      body: data,
+    })
+    .then((reponse) => reponse.json())
+      .then((data) => {
+        return;
+      });
+  }
 }

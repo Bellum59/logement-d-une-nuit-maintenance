@@ -6,6 +6,7 @@ import VueDetail from "./vue/VueDetail.js";
 import VueFooter from "./vue/VueFooter.js";
 import VueRecherche from "./vue/VueRecherche.js";
 import VueReservation from "./vue/vueReservation.js";
+import Reservation from "./model/Reservation.js";
 
 export default class App {
   static page = document.getElementById("page");
@@ -21,6 +22,7 @@ export default class App {
     this.vueDetail = new VueDetail();
     this.vueReservation = new VueReservation();
     this.vueRecherche.initialiserActionFiltre((filtres) => this.actionFiltrerResultat(filtres));
+    this.vueReservation.initialiserActionReservation((reservation) => this.actionReservation(reservation));
     this.longitude = null;
     this.latitude = null;
     this.initialiserNavigation(); //Doit retirer quand on passe au mobile
@@ -69,6 +71,12 @@ export default class App {
       this.logements = logementAcceuil;
     }
     this.vueRecherche.afficherNouveauResultat(logementFiltrer);
+  }
+
+  async actionReservation(reservation){
+    var placerReservation = await LogementDao.ReserverLogement(reservation);
+    this.logements = await LogementDao.ListerLogement(new FiltresLogment(), 10); //Actualise les logements apres la reservation
+    window.location.href = "";
   }
 
   /*initialiserSwipe() {
