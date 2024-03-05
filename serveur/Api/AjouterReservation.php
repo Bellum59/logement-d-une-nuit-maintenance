@@ -8,6 +8,7 @@ if(!empty($_POST)){
     $arrayInfo["dateFin"] = $_POST["dateFinReservation"];
     $arrayInfo["nomReservation"] = $_POST["nomReservation"];
     $arrayInfo["prenomReservation"] = $_POST["prenomReservation"];
+    $arrayInfo["emailReservation"] = $_POST["emailReservation"];
     LogementDao::AjouterReservation($arrayInfo);
     echo json_encode("succes");
 }

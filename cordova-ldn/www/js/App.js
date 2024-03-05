@@ -23,7 +23,7 @@ export default class App {
     this.vueRecherche.initialiserActionFiltre((filtres) => this.actionFiltrerResultat(filtres));
     this.longitude = null;
     this.latitude = null;
-    this.initialiserNavigation();
+    this.initialiserNavigation(); //Doit retirer quand on passe au mobile
 
     /*document.addEventListener("deviceready", (e) => { //Doit reactiver avant de re importer dans android studio - faire cordova prepare avant de importer
       this.initialiserNavigation();

@@ -5,6 +5,7 @@ export default class VueReservation {
   constructor() {
     this.vueTemplate = document.getElementById("template-reservation-logement");
     this.logement = null;
+    this.actionReservation = null;
   }
 
   /**
@@ -16,7 +17,20 @@ export default class VueReservation {
     this.logement = await LogementDao.RecupererLogementParId(id);
     logementReservation.querySelector("#nom-logement").textContent = this.logement.nom;
     logementReservation.querySelector("#prix-logement").textContent = this.logement.prix+ "$";
+    document.getElementById("formReservation").addEventListener("submit", (evenement) => this.enregistrer(evenement));
     App.page.replaceChildren(logementReservation);
     App.footer.colorerBouton();
+  }
+
+  initialiserActionReservation(actionReservation){
+    this.actionReservation = actionReservation;
+  }
+
+  enregistrer(evenement){
+    evenement.preventDefault();
+    var dateDebutNonFormatter = document.getElementById("date-debut").value;
+    var heureDebut = document.getElementById("heure-debut").value;
+    var dateFinNonFormatter = document.getElementById("date-fin").value;
+    var heureFin = document.getElementById("heure-fin").value;
   }
 }
