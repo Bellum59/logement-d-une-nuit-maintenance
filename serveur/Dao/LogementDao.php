@@ -34,7 +34,7 @@ class LogementDao
         require_once 'connexion.php';
         $bdd = new BaseDeDonnees();
         $basededonnees = $bdd->pdo;
-        $SQL_RECUPERE_LOGEMENT_FILTRER = "SELECT * FROM logement WHERE longitude >= :minLon AND longitude <= :maxLon AND lattitude >= :minLat AND lattitude <= :maxLat";
+        $SQL_RECUPERE_LOGEMENT_FILTRER = "SELECT * FROM logement WHERE longitude >= :minLon AND longitude <= :maxLon AND lattitude >= :minLat AND lattitude <= :maxLat AND id NOT IN (SELECT idLogement FROM reservation WHERE dateFinReservation>NOW());";
 
         /*
         * Fonction pour recup la distance : https://stackoverflow.com/questions/37578301/php-calculate-latitude-longitude-which-is-nearer-than-50-km
@@ -97,7 +97,7 @@ class LogementDao
         $bdd = new BaseDeDonnees();
         $basededonnees = $bdd->pdo;
         $SQL_AJOUTER_RESERVATION = "INSERT INTO reservation (idLogement, dateDebutReservation,dateFinReservation,nomReservation,prenomReservation,emailReservation) VALUES (:idLogement, :dateDebutReservation, :dateFinReservation, :nomReservation, :prenomReservation, :emailReservation)";
-        $requete = $bdd->prepare($SQL_AJOUTER_RESERVATION);
+        $requete = $bdd->pdo->prepare($SQL_AJOUTER_RESERVATION);
         $requete->bindParam(":idLogement", $arrayInfo["idLogement"]);
         $requete->bindParam(":dateDebutReservation", $arrayInfo["dateDebut"]);
         $requete->bindParam(":dateFinReservation", $arrayInfo["dateFin"]);
