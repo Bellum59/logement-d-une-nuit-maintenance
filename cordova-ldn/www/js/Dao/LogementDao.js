@@ -46,8 +46,9 @@ export default class LogementDao {
     if (filtresLogment.prixMin) data.append("prixMin", filtresLogment.prixMin);
     if (filtresLogment.prixMax) data.append("prixMax", filtresLogment.prixMax);
     data.append("limite", limite);
-    await fetch("https:/mobile.devbel.xyz/Api/FiltrerListe.php", {
+    await fetch("https://mobile.devbel.xyz/Api/FiltrerListe.php", {
       method: "POST",
+      mode : "cors",
       body: data,
     })
       .then((reponse) => reponse.json())

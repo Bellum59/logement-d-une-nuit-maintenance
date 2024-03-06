@@ -17,7 +17,7 @@ export default class VueAccueil {
     logements.forEach((logement) => {
       /**@type HTMLElement */
       let logementAffiche = this.logementTemplate.content.cloneNode(true);
-      logementAffiche.querySelector(".appercu-logement").href += logement.id;
+      logementAffiche.querySelector(".appercu-logement").href = `#logement/${logement.id}`;
       logementAffiche.querySelector(".accueilimg").src = logement.image;
       logementAffiche.querySelector(".nom").textContent = logement.nom;
       logementAffiche.querySelector(".adresse").textContent = logement.ville;

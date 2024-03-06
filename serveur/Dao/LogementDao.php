@@ -34,7 +34,7 @@ class LogementDao
         require_once 'connexion.php';
         $bdd = new BaseDeDonnees();
         $basededonnees = $bdd->pdo;
-        $SQL_RECUPERE_LOGEMENT_FILTRER = "SELECT * FROM logement WHERE longitude >= :minLon AND longitude <= :maxLon AND lattitude >= :minLat AND lattitude <= :maxLat AND id NOT IN (SELECT idLogement FROM reservation WHERE dateFinReservation>NOW());";
+        $SQL_RECUPERE_LOGEMENT_FILTRER = "SELECT * FROM logement WHERE longitude >= :minLon AND longitude <= :maxLon AND lattitude >= :minLat AND lattitude <= :maxLat";
 
         /*
         * Fonction pour recup la distance : https://stackoverflow.com/questions/37578301/php-calculate-latitude-longitude-which-is-nearer-than-50-km
@@ -62,9 +62,12 @@ class LogementDao
             $SQL_RECUPERE_LOGEMENT_FILTRER = $SQL_RECUPERE_LOGEMENT_FILTRER . " AND prix <= :prixMax";
             $prixMax = $arrayFiltre["prixMax"];
         }
+        $SQL_RECUPERE_LOGEMENT_FILTRER .= " AND id NOT IN(SELECT idLogement FROM reservation WHERE dateFinReservation>NOW())";
         if ($limite > 0) {
             $SQL_RECUPERE_LOGEMENT_FILTRER .= " LIMIT :limite";
         }
+
+       
 
         $requete = $basededonnees->prepare($SQL_RECUPERE_LOGEMENT_FILTRER);
         //var_dump($requete);

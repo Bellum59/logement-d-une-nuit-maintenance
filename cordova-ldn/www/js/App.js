@@ -27,14 +27,14 @@ export default class App {
     this.latitude = null;
     this.initialiserNavigation(); //Doit retirer quand on passe au mobile
 
-    /*document.addEventListener("deviceready", (e) => { //Doit reactiver avant de re importer dans android studio - faire cordova prepare avant de importer
+    document.addEventListener("deviceready", (e) => { 
       this.initialiserNavigation();
-      this.initialiserSwipe();
+      //this.initialiserSwipe();
       navigator.geolocation.getCurrentPosition((position) => {
         this.longitude = position.coords.longitude;
         this.latitude = position.coords.latitude;
       });
-    });*/
+    });
   }
 
   async initialiserNavigation() {
@@ -52,7 +52,6 @@ export default class App {
 
     if (!hash) {
       this.vueAcceuil.afficher(this.logements);
-      console.log("test")
     } else if (hash.match(/^#recherche/)) {
       this.vueRecherche.afficher(this.logements, this.longitude, this.latitude);
     } else if ((navigation = hash.match(/^#logement\/([\d]+)/))) {
@@ -93,4 +92,3 @@ export default class App {
 }
 
 new App(window);
-console.log("success");

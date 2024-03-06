@@ -17,15 +17,8 @@ export default class VueDetail {
     logementAffiche.querySelector("#image-logement").src = logement.image;
     logementAffiche.querySelector("#prix").textContent = `${logement.prix}$ par nuit`;
     logementAffiche.querySelector("#description").textContent = logement.description;
-    var test = logementAffiche.querySelector("#reservation");
-    test.addEventListener("click" , (evenement)=> this.reserver(evenement));
+    logementAffiche.querySelector("#reservation-href").href = `#reservation/${id}`;
     App.page.replaceChildren(logementAffiche);
     App.footer.colorerBouton();
-  }
-
-  reserver(evenement){
-    evenement.stopPropagation();
-    evenement.preventDefault();
-    alert("Reservation");
   }
 }

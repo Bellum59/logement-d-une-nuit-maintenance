@@ -8,16 +8,18 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <script type="module" src="js/App.js"></script>
-    <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script> !-->
+    <script type="module" src="js/App.js" defer></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova_plugins.js"></script>
     <!--<script src="js/plugin/zingtouch.min.js"></script> !-->
+  </head>
   <body>
     <header>
       <img class="" src="images/logo.svg" />
     </header>
 
-    <main id="page"> <!-- Refermer le main ici lorsque terminer travail HTML-->
+    <main id="page"></main>
+
     <template id="template-recherche">
       <div id="titre" class="titre">Recherche</div>
       <div id="fleche" class="fleche">
@@ -86,11 +88,11 @@
       <img id="image-logement" src="" alt="image logement" />
       <p id="prix"></p>
       <p id="description"></p>
-      <a id="reservation" href="#">
+      <a href="#" id="reservation-href">
         <div id="bouton-reserver">Réserver</div>
       </a>
     </template>
-    
+
     <template id="template-reservation-logement">
       <h1 id="titre-reservation"> Confirmation de Reservation</h1>
       <h2 class="sous-titre">Info Personnel</h2>
@@ -116,31 +118,25 @@
       <table id="info-reservation">
         <tr>
           <td><label for="nom"> Nom </label></td>
-          <td><input class="input-reservation" type="text" id="nom" name="nom"></td>
+          <td><p id="nom-logement"></td>
         </tr>
         <tr>
-          <td><label for="prenom"> Prenom </label></td>
-          <td><input class="input-reservation" type="text" id="prenom" name="nom"></td>
-        </tr>
-        <tr>
-          <td><label for="email"> Email </label></td>
-          <td><input class="input-reservation" type="text" id="email" name="email"></td>
+          <td><label for="adresse"> Prix </label></td>
+          <td><p id="prix-logement"></td>
         </tr>
         <tr>
           <td><label for="date-debut">Date début</label></td>
-          <td><input type="date" id="date-debut"><input type="time"></td>
+          <td><input type="date" id="date-debut"><input id="heure-debut" type="time" min="10:00" max="18:00"></td>
         </tr>
         <tr>
           <td><label for="date-fin">Date fin</label></td>
-          <td><input type="date" id="date-fin"><input type="time"></td>
+          <td><input type="date" id="date-fin"><input id="heure-fin" type="time" min="10:00" max="18:00"></td>
         </tr>
       </table>
       <input type="submit" value="Reserver" id="submitReserver">
       </form>
       </div>
     </template>
-  </main>
-
 
     <footer>
       <a href="#">
